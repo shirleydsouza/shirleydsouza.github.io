@@ -93,6 +93,14 @@
   .list strong{display:block;font-weight:700}
   .list span{color:var(--muted);font-size:15px}
 
+  /* Tabs: one panel visible at a time */
+  [data-tab]{display:none}
+  [data-tab].active{display:block}
+  main > section[data-tab]:not(#about):not(#skills){border-top:none;min-height:calc(100vh - 64px - 106px)}
+  .links a.current{color:var(--accent-dark);border-color:var(--accent)}
+  .contact-card{max-width:640px}
+  .contact-card .btns{margin-top:22px}
+
   footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:15px}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
   footer a{color:var(--ink);text-decoration:none;margin-left:20px}
@@ -115,7 +123,7 @@
 <header>
   <div class="wrap">
     <nav>
-      <a class="brand" href="#top">Shirley Dsouza</a>
+      <a class="brand" href="#about">Shirley Dsouza</a>
       <button class="menu-btn" aria-label="Open menu" onclick="document.getElementById('links').classList.toggle('open')">Menu</button>
       <div class="links" id="links">
         <a href="#about">About</a>
@@ -131,7 +139,7 @@
 </header>
 
 <main id="top">
-  <div class="wrap">
+  <div class="wrap" data-tab="about">
     <div class="hero">
       <div>
         <p class="eyebrow">Lead Member of Technical Staff @ Salesforce</p>
@@ -150,7 +158,7 @@
     </div>
   </div>
 
-  <section id="about">
+  <section id="about" data-tab="about">
     <div class="wrap">
       <p class="kicker">About</p>
       <h2>Helping engineers ship with confidence</h2>
@@ -175,7 +183,7 @@
     </div>
   </section>
 
-  <section class="alt" id="skills">
+  <section class="alt" id="skills" data-tab="about">
     <div class="wrap">
       <p class="kicker">Skills</p>
       <h2>Tools I work with</h2>
@@ -191,7 +199,7 @@
     </div>
   </section>
 
-  <section id="experience">
+  <section id="experience" data-tab="experience">
     <div class="wrap">
       <p class="kicker">Experience</p>
       <h2>Where I've worked</h2>
@@ -249,7 +257,7 @@
     </div>
   </section>
 
-  <section id="blog">
+  <section id="blog" data-tab="blog">
     <div class="wrap">
       <p class="kicker">Technical Blog</p>
       <h2>Writing</h2>
@@ -282,7 +290,7 @@
     </div>
   </section>
 
-  <section class="alt" id="research">
+  <section id="research" data-tab="research">
     <div class="wrap">
       <p class="kicker">Research</p>
       <h2>Publications</h2>
@@ -299,7 +307,7 @@
     </div>
   </section>
 
-  <section id="talks">
+  <section id="talks" data-tab="talks">
     <div class="wrap">
       <p class="kicker">Talks &amp; Community</p>
       <h2>Sharing what I learn</h2>
@@ -322,7 +330,7 @@
     </div>
   </section>
 
-  <section class="alt" id="education">
+  <section id="education" data-tab="education">
     <div class="wrap">
       <p class="kicker">Education</p>
       <h2>Education</h2>
@@ -340,9 +348,23 @@
       </div>
     </div>
   </section>
+
+  <section id="contact" data-tab="contact">
+    <div class="wrap">
+      <p class="kicker">Contact</p>
+      <h2>Let's connect</h2>
+      <div class="contact-card prose">
+        <p>I'm always happy to talk about release engineering, software supply chain security, AI-assisted development and research collaborations. The best way to reach me is on LinkedIn.</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="https://www.linkedin.com/in/shirley-dsouza" target="_blank" rel="noopener">Message me on LinkedIn</a>
+          <a class="btn btn-ghost" href="https://medium.com/@dsouzashirleys" target="_blank" rel="noopener">Follow on Medium</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer id="contact">
+<footer>
   <div class="wrap">
     <div>© 2026 Shirley Dsouza · San Francisco, California</div>
     <div>
@@ -352,5 +374,21 @@
   </div>
 </footer>
 
+<script>
+{
+  const tabs = ["about","blog","experience","research","talks","education","contact"];
+  const links = document.getElementById("links");
+  function show() {
+    let tab = (location.hash || "#about").slice(1);
+    if (!tabs.includes(tab)) tab = tabs.includes(document.getElementById(tab)?.dataset.tab) ? document.getElementById(tab).dataset.tab : "about";
+    document.querySelectorAll("[data-tab]").forEach(el => el.classList.toggle("active", el.dataset.tab === tab));
+    links.querySelectorAll("a").forEach(a => a.classList.toggle("current", a.getAttribute("href") === "#" + tab));
+    links.classList.remove("open");
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", show);
+  show();
+}
+</script>
 </body>
 </html>
