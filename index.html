@@ -385,8 +385,12 @@
     links.querySelectorAll("a").forEach(a => a.classList.toggle("current", a.getAttribute("href") === "#" + tab));
     links.classList.remove("open");
     window.scrollTo(0, 0);
+    requestAnimationFrame(() => window.scrollTo(0, 0));
+    setTimeout(() => window.scrollTo(0, 0), 50);
   }
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
   window.addEventListener("hashchange", show);
+  window.addEventListener("load", () => window.scrollTo(0, 0));
   show();
 }
 </script>
