@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shirley Dsouza · Release Safety &amp; CI/CD Platform Engineer</title>
+<meta name="description" content="Shirley Dsouza, Lead Member of Technical Staff at Salesforce. Platform engineer focused on release safety, CI/CD and cloud infrastructure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf6f0; --bg-alt:#f3ece2; --ink:#2b2724; --muted:#5f5751; --line:#e6ddd1;
+    --accent:#e2776d; --accent-dark:#c9605a; --card:#fffdf9;
+    --serif:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --sans:"Lato", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65}
+  a{color:var(--accent-dark)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+  /* Nav */
+  header{position:sticky;top:0;z-index:10;background:rgba(250,246,240,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--ink);text-decoration:none}
+  .links{display:flex;gap:26px}
+  .links a{color:var(--muted);text-decoration:none;font-size:15px;padding:4px 0;border-bottom:2px solid transparent}
+  .links a:hover{color:var(--accent-dark);border-color:var(--accent)}
+  .menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:15px;color:var(--ink);cursor:pointer}
+
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:center;padding:80px 0 72px}
+  .eyebrow{color:var(--accent-dark);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0 0 18px}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(42px,5.6vw,66px);line-height:1.05;margin:0 0 24px}
+  h1 em{color:var(--accent);font-style:italic}
+  .lede{color:var(--muted);max-width:560px;margin:0 0 32px}
+  .btns{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 26px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .15s, box-shadow .15s}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 18px rgba(226,119,109,.3)}
+  .btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px)}
+  .btn-ghost{border:1px solid #cfc4b6;color:var(--ink);background:var(--card)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent-dark)}
+
+  .polaroid{justify-self:center;position:relative;background:#fff;padding:16px 16px 46px;box-shadow:0 18px 40px rgba(60,40,20,.16);transform:rotate(2.5deg);width:min(320px,80vw)}
+  .polaroid::before{content:"";position:absolute;top:-14px;left:50%;width:110px;height:28px;transform:translateX(-50%) rotate(-2deg);background:rgba(232,224,200,.85)}
+  .photo{aspect-ratio:4/5;background:linear-gradient(150deg,#f3d9cf,#e9c2b7 55%,#dca99f);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:92px;color:#fff;letter-spacing:.04em}
+  .photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .caption{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-family:var(--serif);font-style:italic;font-size:19px;color:var(--muted)}
+
+  /* Sections */
+  section{padding:76px 0;border-top:1px solid var(--line)}
+  section.alt{background:var(--bg-alt)}
+  .kicker{color:var(--accent-dark);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0 0 10px}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(32px,4vw,44px);line-height:1.1;margin:0 0 26px}
+  h3{font-family:var(--serif);font-weight:600;font-size:25px;margin:0 0 6px;line-height:1.2}
+  p{margin:0 0 16px}
+  .prose{max-width:760px;color:var(--muted)}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .card p{color:var(--muted);font-size:15.5px;margin:0}
+
+  .chips{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 15px;font-size:14.5px;color:var(--ink)}
+
+  /* Timeline */
+  .timeline{position:relative;margin-left:8px}
+  .timeline::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:2px;background:var(--line)}
+  .job{position:relative;padding:0 0 42px 34px}
+  .job:last-child{padding-bottom:0}
+  .job::before{content:"";position:absolute;left:-6px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+  .meta{color:var(--muted);font-size:15px;margin-bottom:12px}
+  .roles{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px;padding:0;list-style:none}
+  .roles li{font-size:13.5px;background:#fbe9e5;color:var(--accent-dark);border-radius:999px;padding:4px 12px}
+  .job ul.points{margin:0;padding-left:20px;color:var(--muted)}
+  .job ul.points li{margin-bottom:7px}
+
+  /* Feature items */
+  .items{display:grid;gap:20px}
+  .item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+  .label{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-dark);margin-bottom:8px}
+  .venue{color:var(--muted);font-size:15px;margin-bottom:10px}
+  .item p{color:var(--muted);margin-bottom:12px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tag{font-size:13px;border:1px solid var(--line);border-radius:999px;padding:3px 11px;color:var(--muted)}
+
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .list{list-style:none;margin:0;padding:0}
+  .list li{padding:14px 0;border-bottom:1px solid var(--line)}
+  .list li:last-child{border-bottom:none}
+  .list strong{display:block;font-weight:700}
+  .list span{color:var(--muted);font-size:15px}
+
+  footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:15px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  footer a{color:var(--ink);text-decoration:none;margin-left:20px}
+  footer a:first-child{margin-left:0}
+  footer a:hover{color:var(--accent-dark)}
+
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr;padding:56px 0;gap:44px}
+    .polaroid{order:-1;width:min(260px,70vw)}
+    .cards,.two{grid-template-columns:1fr}
+    .menu-btn{display:block}
+    .links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 28px 16px}
+    .links.open{display:flex}
+    .links a{padding:10px 0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#top">Shirley Dsouza</a>
+      <button class="menu-btn" aria-label="Open menu" onclick="document.getElementById('links').classList.toggle('open')">Menu</button>
+      <div class="links" id="links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#research">Research</a>
+        <a href="#talks">Talks &amp; Community</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <p class="eyebrow">Lead Member of Technical Staff @ Salesforce</p>
+        <h1>Building <em>safe</em>, automated software delivery at <em>cloud scale</em>.</h1>
+        <p class="lede">I'm Shirley Dsouza, a platform engineer with about ten years of experience across release safety, CI/CD and cloud infrastructure. I lead release-safety capabilities on an artifact governance and release platform that tracks every build from commit to production and stops known-bad changes before they ship.</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="#experience">View my experience</a>
+          <a class="btn btn-ghost" href="#research">Read my research</a>
+        </div>
+      </div>
+      <figure class="polaroid" aria-label="Portrait of Shirley Dsouza">
+        <!-- photo.jpg must sit in the same folder as this file -->
+        <div class="photo"><img src="photo.jpg" alt="Shirley Dsouza"></div>
+        <figcaption class="caption">San Francisco, CA</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <p class="kicker">About</p>
+      <h2>Helping engineers ship with confidence</h2>
+      <div class="prose">
+        <p>Over six years at Salesforce I grew from intern to Lead Member of Technical Staff. My work sits where CI/CD, cloud infrastructure and reliability meet: I design services that record every build artifact on its way to production, require test evidence and compliance before a release moves forward, and roll changes out gradually behind automatic guardrails.</p>
+        <p>I like taking ambiguous, cross-team problems from first design through production rollout, and I care about mentoring, thoughtful code review and a team that wins together. Before Salesforce I spent three years building trade finance systems at JPMorgan Chase in Mumbai, then earned my master's in Computer Science at USC.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3>Release safety</h3>
+          <p>Pre-deployment blocking checks, artifact invalidation, and release gates driven by integration-test evidence.</p>
+        </div>
+        <div class="card">
+          <h3>Progressive delivery</h3>
+          <p>Canary selection, restrictive rollout strategies and fleet-wide rollout guardrails.</p>
+        </div>
+        <div class="card">
+          <h3>Cloud platform</h3>
+          <p>Kubernetes on AWS EKS, event-driven services on SNS/SQS, and infrastructure as code with Terraform and Helm.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="skills">
+    <div class="wrap">
+      <p class="kicker">Skills</p>
+      <h2>Tools I work with</h2>
+      <div class="chips">
+        <span class="chip">Java</span><span class="chip">Backend services</span><span class="chip">Distributed systems</span>
+        <span class="chip">Event-driven architecture</span><span class="chip">PostgreSQL</span><span class="chip">AWS</span>
+        <span class="chip">SNS / SQS</span><span class="chip">Kubernetes</span><span class="chip">Amazon EKS</span>
+        <span class="chip">Terraform</span><span class="chip">Helm</span><span class="chip">Spinnaker</span>
+        <span class="chip">Jenkins</span><span class="chip">CI/CD</span><span class="chip">Progressive delivery</span>
+        <span class="chip">Integration testing</span><span class="chip">Production on-call</span><span class="chip">Vulnerability remediation</span>
+        <span class="chip">Spring</span><span class="chip">Docker</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <p class="kicker">Experience</p>
+      <h2>Where I've worked</h2>
+      <div class="timeline">
+
+        <div class="job">
+          <h3>Salesforce</h3>
+          <div class="meta">San Francisco, CA · 2020 – present · Developer Infrastructure</div>
+          <ul class="roles">
+            <li>Lead Member of Technical Staff · Feb 2026 – present</li>
+            <li>Senior Member of Technical Staff · Aug 2022 – Feb 2026</li>
+            <li>Member of Technical Staff · Jan 2021 – Jul 2022</li>
+            <li>Software Engineer Intern · May – Aug 2020</li>
+          </ul>
+          <ul class="points">
+            <li>Technical lead for release-safety features on an internal artifact governance and release orchestration platform used across the engineering organization.</li>
+            <li>Designed and launched pre-deployment blocking checks and an artifact invalidation workflow so teams can stop known-bad builds from reaching production, rolled out in phases from pilot services to fleet-wide enforcement.</li>
+            <li>Delivered CI/CD test-evidence capture and enforcement, so releases progress only when required integration tests pass.</li>
+            <li>Owned safe-change controls for Kubernetes (AWS EKS) platform releases, and built progressive-rollout support with canary selection and a global fleet-percentage guardrail.</li>
+            <li>Moved artifact event ingestion from synchronous calls to an event-driven design on AWS SNS/SQS with dead-letter queues, improving reliability and decoupling.</li>
+            <li>Built support for immutable, versioned CI/CD pipelines with dedicated access control, plus version-drift and change-summary views that show what is running in each environment.</li>
+            <li>Added multi-architecture (ARM/aarch64) image support and improved platform performance and resilience through batching, prefetching, connection-pool tuning and concurrency fixes.</li>
+            <li>Run release management and production on-call for the platform, lead container vulnerability remediation, and mentor and onboard new engineers.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <h3>University of Southern California</h3>
+          <div class="meta">Los Angeles, CA · 2019 – 2020</div>
+          <ul class="roles">
+            <li>Course Producer, CSCI 571 Web Technologies · Aug – Dec 2020</li>
+            <li>IT Support Assistant, Facilities Management Services · Aug – Dec 2019</li>
+          </ul>
+          <ul class="points">
+            <li>Supported students in the graduate web technologies course.</li>
+            <li>Uploaded classroom data across campus to the university's facilities system and helped automate job assignments by priority and preference.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <h3>JPMorgan Chase &amp; Co.</h3>
+          <div class="meta">Mumbai, India · Jul 2016 – Jun 2019</div>
+          <ul class="roles">
+            <li>Associate Software Engineer · Jan – Jun 2019</li>
+            <li>Technology Analyst · Jul 2016 – Dec 2018</li>
+          </ul>
+          <ul class="points">
+            <li>Developed pricing and accounting features for trade finance products in Java, Spring and Hibernate.</li>
+            <li>Rebuilt existing functionality on Spring MVC, cutting batch job execution time by 50%.</li>
+            <li>Rewrote and optimized SQL for large daily volumes of trade data, and maintained production stability after releases.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="research">
+    <div class="wrap">
+      <p class="kicker">Research</p>
+      <h2>Publications</h2>
+      <div class="items">
+        <article class="item">
+          <span class="label">Journal paper · August 2018</span>
+          <h3>Video Summarization and Restoration</h3>
+          <div class="venue">International Journal of Advanced Research in Computer Engineering &amp; Technology (IJARCET)</div>
+          <p>Explores techniques for summarizing long videos into their most informative frames and restoring those frames to improve quality.</p>
+          <div class="tags"><span class="tag">Computer vision</span><span class="tag">Video processing</span></div>
+          <p style="margin:16px 0 0"><a class="btn btn-ghost" href="https://drive.google.com/file/d/1nPRicpCEILggbwBxNrfNbDpOP6xaFOls/view" target="_blank" rel="noopener">Read the paper (PDF)</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="talks">
+    <div class="wrap">
+      <p class="kicker">Talks &amp; Community</p>
+      <h2>Sharing what I learn</h2>
+      <div class="two">
+        <div>
+          <ul class="list">
+            <li><strong>Developer Productivity Engineering (DPE) Summit</strong><span>Attendee · 2024</span></li>
+            <li><strong>AI in Practice camp</strong><span>Participant and hackathon project · 2025</span></li>
+            <li><strong>Food bank distribution</strong><span>Team volunteering · 2022</span></li>
+          </ul>
+        </div>
+        <div>
+          <ul class="list">
+            <li><strong>Peer-nominated recognition award</strong><span>Salesforce · 2024</span></li>
+            <li><strong>Runner-up, Code for Good challenge</strong><span>JPMorgan Chase · 2015</span></li>
+            <li><strong>Sir Ratan Tata Scholarship</strong><span>Merit list · 2013 and 2014</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="education">
+    <div class="wrap">
+      <p class="kicker">Education</p>
+      <h2>Education</h2>
+      <div class="two">
+        <div class="card">
+          <h3>University of Southern California</h3>
+          <div class="venue">M.S., Computer Science · 2019 – 2020</div>
+          <p>Coursework in analysis of algorithms, machine learning, artificial intelligence, information retrieval, database systems and web technologies.</p>
+        </div>
+        <div class="card">
+          <h3>Fr. Conceicao Rodrigues College of Engineering</h3>
+          <div class="venue">B.E., Computer Engineering · 2012 – 2016 · GPA 9.01/10</div>
+          <p>Vice-president of the Entrepreneurship Cell and member of the Computer Society of India.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div>© 2026 Shirley Dsouza · San Francisco, California</div>
+    <div>
+      <a href="https://www.linkedin.com/in/shirley-dsouza" target="_blank" rel="noopener">LinkedIn</a>
+      <!-- Add when ready: <a href="https://github.com/YOUR-USERNAME">GitHub</a> <a href="mailto:you@example.com">Email</a> -->
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
